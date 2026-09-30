@@ -1,0 +1,41 @@
+{
+  "name": "opencode-ntfy-notify",
+  "version": "1.0.0",
+  "description": "Plugin OpenCode v2 : notifications ntfy (tâche terminée, permission demandée, question de l'agent, erreur bloquante)",
+  "license": "MIT",
+  "keywords": [
+    "opencode",
+    "opencode-plugin",
+    "ntfy",
+    "notification"
+  ],
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "tsc -p tsconfig.test.json && node --test \".test-build/test/*.test.js\"",
+    "check": "npm run typecheck && npm run test && npm run build",
+    "prepublishOnly": "npm run check"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@opencode/plugin": "^2.0.19",
+    "@types/node": "^26.6.3",
+    "typescript": "^7.0.2"
+  }
+}

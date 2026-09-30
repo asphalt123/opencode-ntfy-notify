@@ -1,0 +1,72 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+
+  // Installation par copie : copiez TOUT le contenu de dist/ dans
+  // .opencode/plugins/ntfy-notify/ (projet) ou
+  // ~/.config/opencode/plugins/ntfy-notify/ (global), puis rechargez opencode.
+  //
+  // Installation par npm : npm install opencode-ntfy-notify, puis remplacez
+  // "package" par "opencode-ntfy-notify".
+  //
+  // Précédence : options ci-dessous > variables d'environnement > défauts.
+  "plugins": [
+    {
+      // Chemin relatif au fichier de config qui contient cette entrée.
+      "package": "./plugins/ntfy-notify/index.js",
+
+      "options": {
+        // Serveur ntfy (défaut : "https://ntfy.sh").
+        // ⚠️ ntfy.sh est PUBLIC : topics devinables, messages lisibles par tous.
+        // Pour du contenu détaillé, auto-hébergez ntfy et mettez votre URL ici.
+        "server": "https://ntfy.sh",
+
+        // Topic de publication : abonnez-vous à ce topic dans l'app ntfy.
+        // Choisissez-en un à vous, par ex. "opencode-8f3k2".
+        // (Défaut : "opencode-notify")
+        "topic": "opencode-notify",
+
+        // Activer/désactiver le plugin (défaut : true).
+        "enabled": true,
+
+        // Niveau de détail envoyé (défaut : "minimal").
+        //   "minimal" : nom du projet + phrase fixe. Aucun contenu de session.
+        //   "summary" : + type d'erreur ou action de permission. Pas de contenu.
+        //   "full"    : tout (titre de session, message d'erreur, chemins).
+        // Une valeur invalide retombe sur "minimal".
+        "verbosity": "minimal",
+
+        // Priorités ntfy 1..5 (défauts : 3 / 4 / 4 / 5).
+        "priorityCompleted": 3,
+        "priorityPermission": 4,
+        // Question de l'agent : même niveau que la permission (attente utilisateur).
+        "priorityQuestion": 4,
+        "priorityError": 5,
+
+        // Déclencheurs (défauts : true).
+        "notifyOnComplete": true,
+        "notifyOnPermission": true,
+        // Question de l'agent (event "form.created") : à désactiver si vous ne
+        // voulez pas être prévenu quand l'agent attend une réponse de vous.
+        "notifyOnQuestion": true,
+        "notifyOnError": true,
+
+        // Fenêtre anti-doublons en ms. 0 désactive la dédup.
+        // (Défaut : 15000)
+        "dedupeWindowMs": 15000,
+
+        // Token ntfy optionnel (serveur privé) : envoyé en
+        // "Authorization: Bearer ***". N'est jamais journalisé.
+        // "token": "tk_...",
+
+        // URL optionnelle jointe aux notifications (champ "click" ntfy).
+        // "click": "https://example.com",
+
+        // Si true, n'envoie rien (utile pour tester le chargement). (Défaut : false)
+        "quiet": false,
+
+        // Si true, journalise la notif au lieu de l'envoyer (debug). (Défaut : false)
+        "dryRun": false
+      }
+    }
+  ]
+}

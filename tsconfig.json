@@ -1,0 +1,21 @@
+{
+  "//": "Typecheck strict du source. `module: nodenext` (et non `bundler`) est indispensable : les imports relatifs portent l'extension `.js` dans le source, sinon tsc ne réécrit rien et le `dist/` produit des specifiers sans extension, illisibles par Node en ESM.",
+  "compilerOptions": {
+    "target": "es2022",
+    "lib": ["es2023"],
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "types": ["node"],
+    "verbatimModuleSyntax": true
+  },
+  "include": ["src", "typecheck", "test"]
+}

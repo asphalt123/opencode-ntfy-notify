@@ -1,0 +1,13 @@
+{
+  "//": "Build de distribution : ESM vers dist/, sans le dossier typecheck/ (types uniquement).",
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "outDir": "dist",
+    "rootDir": "src",
+    "declaration": true,
+    "declarationMap": false,
+    "sourceMap": false
+  },
+  "include": ["src"]
+}

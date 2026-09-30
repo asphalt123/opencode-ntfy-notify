@@ -1,0 +1,9 @@
+node_modules/
+*.log
+
+# Sortie de compilation des tests (`npm test`) : régénérée, jamais versionnée.
+.test-build/
+
+# `dist/` est volontairement VERSIONNÉ (et non ignoré) : un plugin copié dans
+# `.opencode/plugins/<nom>/` n'a pas d'étape de build, le JS compilé doit être
+# présent dans le dépôt pour fonctionner out of the box.
